@@ -54,7 +54,8 @@ node apiDescription.js
 node index.js
 ```
 
-The application will be available at `http://localhost:3000`.
+The application will be available at `http://localhost:5000`.
+The Custom Gen-AI API will be running at `http://localhost:3000`
 
 
 ## 📝 Note
