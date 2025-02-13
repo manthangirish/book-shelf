@@ -1,0 +1,37 @@
+<%- include('partials/header.ejs') %> <% if (locals.books && books.length>0) {
+%> <%books.forEach(book => { %>
+<a class="" href="/notes/<%=book.id %>">
+  <div class="box m-6 columns heading-hover" id="<%= book.id %>">
+    <img
+      class="image block mx-3"
+      src="<%= `https://covers.openlibrary.org/b/id/${book.coverid}-L.jpg` %>"
+      alt="book-image"
+    />
+    <div class="mx-2 content">
+      <h2
+        class="has-text-info is-family-sans-serif has-text-weight-semibold is-capitalized"
+      >
+        <%= book.title %>
+      </h2>
+      <p class="block has-text-warning"><%= book.author %></p>
+      <p class="block">ISBN:<%= book.isbn %></p>
+      <p class="block has-text-light has-text-justified">
+        <%= book.description %>
+      </p>
+      <p>Ratings: <%= book.rating %>/10</p>
+      <p class="block has-text-right">
+        Last Edited: <%= new
+        Date(book.last_edited).toLocaleString('en-US',{year:"numeric" , month:
+        '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second:
+        '2-digit', hour12: false }) %>
+      </p>
+    </div>
+  </div>
+</a>
+<% }) %> <% } else { %>
+<div class="box mx-2">
+  <div class="content">
+    <h2 class="has-text-centered">No Books are added</h2>
+  </div>
+</div>
+<% } %> <%- include('partials/footer.ejs') %>

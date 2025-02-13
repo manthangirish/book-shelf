@@ -1,0 +1,25 @@
+{
+  "name": "my-book-shelf",
+  "version": "1.0.0",
+  "description": "This project allows user to add their notes and reviews of those books they have finished or reading. Basically as the book shelf but virtually.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manthan",
+  "license": "ISC",
+  "dependencies": {
+    "@google-ai/generativelanguage": "^2.8.0",
+    "@google/generative-ai": "^0.21.0",
+    "axios": "^1.7.9",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "google-auth-library": "^9.15.0",
+    "pg": "^8.13.1"
+  }
+}

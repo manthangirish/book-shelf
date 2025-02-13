@@ -1,0 +1,125 @@
+<%-include('partials/header.ejs') %> <% if (locals.book) { %>
+<div class="box m-6">
+  <div class="block">
+    <a
+      href="/home"
+      class="link-hover has-text-success block has-text-right p-2 mx-auto"
+      >Check out my other books</a
+    >
+  </div>
+  <div class="columns p-3" id="<%= book.id %>">
+    <img
+      class="image-notes block mx-3"
+      src="<%= `https://covers.openlibrary.org/b/id/${book.coverid}-L.jpg` %>"
+      alt="book-image"
+    />
+    <div class="mx-2 content">
+      <h1
+        class="has-text-info is-family-sans-serif has-text-weight-semibold is-capitalized"
+      >
+        <%= book.title %>
+      </h1>
+      <p class="block has-text-warning-light"><%= book.author %></p>
+      <p class="block">ISBN:<%= book.isbn %></p>
+      <p class="block has-text-light has-text-justified">
+        <%= book.description %>
+      </p>
+      <p>Ratings: <%= book.rating %>/10</p>
+    </div>
+  </div>
+  <div class="content p-3">
+    <h3 class="has-text-centered has-text-warning is-underlined">Notes</h3>
+    <p class="has-text-justified has-text-light"><%= book.notes %></p>
+    <div class="columns p-2">
+      <button
+        class="button is-success js-modal-trigger block column is-1"
+        data-target="modal-js-example"
+      >
+        Edit
+      </button>
+      <p
+        class="block has-text-right has-text-danger-light column is-3 is-offset-8"
+      >
+        Last Edited: <%= new
+        Date(book.last_edited).toLocaleString('en-US',{year:"numeric" , month:
+        '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second:
+        '2-digit', hour12: false }) %>
+      </p>
+    </div>
+  </div>
+</div>
+<div id="modal-js-example" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <form class="box mx-6 px-4" method="POST" action="/edit-book">
+      <input type="hidden" name="id" value="<%= book.id %>" />
+      <div class="field">
+        <label class="label">Book Title</label>
+        <div class="control">
+          <input
+            class="input is-capitalized"
+            type="text"
+            placeholder="Title"
+            name="title"
+            value="<%= book.title %> "
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Book Author </label>
+        <div class="control">
+          <input
+            name="author"
+            class="input is-capitalized"
+            type="text"
+            placeholder="Author"
+            value="<%= book.author %>"
+            autofocus
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Notes</label>
+        <div class="control">
+          <textarea
+            name="notes"
+            class="textarea is has-text-justified"
+            placeholder="Write your notes"
+          >
+            <%= book.notes %>
+        </textarea
+          >
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Ratings</label>
+        <div class="control">
+          <div class="select">
+            <select name="ratings" selected="<%= book.rating %>">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button class="button is-primary mx-auto has-text-centered" type="submit">
+        Save
+      </button>
+    </form>
+  </div>
+</div>
+
+<% } %> <%-include('partials/footer.ejs') %>

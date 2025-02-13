@@ -1,0 +1,49 @@
+<%- include('partials/header.ejs') %>
+<div class="block box m-6 p-1">
+  <% if (locals.books) { %>
+  <p class="block has-text-warning has-text-centered is-underlined">
+    Click Checkbox to Remove
+  </p>
+  
+    <table class="table mx-auto">
+      <thead>
+        <tr>
+          <th><form class="my-auto" action="/deleteAll" method="POST"><input
+            type="checkbox"
+            name="book"
+            value=""
+            onchange="this.form.submit()"
+          /></form></th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Ratings</th>
+        </tr>
+      </thead>
+      <form action="/handleDelete" method="POST">
+      <tbody class="is-capitalized has-text-light">
+        <% books.forEach(book => { %>
+        <tr class="block">
+          <th>
+            <input
+              type="checkbox"
+              name="book"
+              value="<%=book.id %>"
+              onchange="this.form.submit()"
+            />
+          </th>
+          <th><%= book.title %></th>
+          <th><%= book.author%></th>
+          <th><%= book.rating%>/10</th>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </form>
+
+  <% } else { %>
+    <p class="block has-text-warning has-text-centered is-underlined">
+      There are no books to delete
+    </p>
+    <% } %>
+</div>
+<%- include('partials/footer.ejs') %>

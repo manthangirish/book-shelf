@@ -1,0 +1,28 @@
+.image {
+  width: 250px;
+  height: 375px;
+}
+
+.image-notes {
+  width: 250px;
+  height: 375px;
+}
+
+.box {
+  margin-top: 8.5px;
+  margin-bottom: 8.5px;
+  border: 1px solid white;
+}
+
+.heading-hover {
+  transition: 0.5s;
+}
+
+.heading-hover:hover {
+  background-color: rgb(39, 39, 39);
+  /* text-decoration: underline; */
+}
+
+.link-hover:hover {
+  text-decoration: underline;
+}
